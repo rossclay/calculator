@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Pocket Calculator';
+    src: url('./fonts/POCKC___.ttf')
+}
+
 body {
     display: flex;
     align-self: center;
@@ -18,4 +23,16 @@ body {
 
 .calc-display {
     background-color: #eee;
+    font-family: 'Pocket Calculator', sans-serif;
+    font-size: 40px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clear-delete-section {
+    display: flex
 }
