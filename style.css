@@ -19,12 +19,16 @@ body {
     background-color: grey;
     flex-direction: column;
     max-width: fit-content;
+    padding: 25px;
 }
 
 .calc-display {
     background-color: #eee;
     font-family: 'Pocket Calculator', sans-serif;
     font-size: 40px;
+    border-style: solid;
+    min-width: 150px;
+    margin-bottom: 10px;
 }
 
 .row {
@@ -35,4 +39,39 @@ body {
 
 .clear-delete-section {
     display: flex
+}
+
+.num-btn {
+    background-color: white;
+}
+
+.operator-btn,
+.decimal-btn {
+    background-color: lightgray;
+}
+
+.equal-btn {
+    background-color: lightcyan;
+}
+
+.clear-btn,
+.delete-btn,
+.num-btn,
+.operator-btn,
+.decimal-btn,
+.equal-btn {
+    min-width: 50px;
+    min-height: 50px;
+}
+
+.clear-btn,
+.delete-btn {
+    background-color: orange;
+    min-width: 104px;
+}
+
+button {
+    font-size: 18px;
+    margin: 2px;
+    border-style: solid;
 }
