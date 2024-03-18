@@ -52,17 +52,22 @@ let calcDecimalA = ''
 let calcDecimalB = ''
 
 function operateCalculator() {
-    calcDisplay.textContent = operate(parseFloat(calcDisplayA), parseFloat(calcDisplayB), calcOperator)
-    calcDisplayA = calcDisplay.textContent
+    calcDisplayA = operate(parseFloat(calcDisplayA), parseFloat(calcDisplayB), calcOperator)
+    calcDisplay.textContent = Number(calcDisplayA.toFixed(4))
     calcDisplayB = ''
-    if (calcDisplay.textContent.includes('.')) { calcDecimalA = '.' }
-    else { calcDecimalA = '' }
+    if (calcDisplay.textContent.includes('.')) {
+        calcDecimalA = '.'
+    }
+    else {
+        calcDecimalA = ''
+    }
     calcDecimalB = ''
     calcOperator = ''
     operatorBtns.forEach((operatorBtn) => operatorBtn.setAttribute('style', 'background-color: lightgray'))
 }
 let numBtns = document.querySelectorAll('.num-btn')
 numBtns.forEach((numBtn) => numBtn.addEventListener('click', () => {
+    // before an operator has been chosen
     if (calcOperator === '') {
         calcDisplayA += numBtn.id
         calcDisplay.textContent = calcDisplayA
@@ -97,8 +102,9 @@ equalBtn.addEventListener('click', () => {
 // under construction
 let deleteBtn = document.querySelector('.delete-btn')
 deleteBtn.addEventListener('click', () => {
-    let calcDisplayValue = calcDisplay.textContent
-    calcDisplay.textContent.substring(0, calcDisplayValue.length - 1)
+
+    console.log(calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 1))
+    calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 1)
 
 
 })
@@ -136,3 +142,4 @@ decimalBtn.addEventListener('click', () => {
 
 })
 
+// keyboard support
