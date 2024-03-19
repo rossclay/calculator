@@ -99,14 +99,34 @@ equalBtn.addEventListener('click', () => {
         operateCalculator()
     }
 })
-// under construction
+
 let deleteBtn = document.querySelector('.delete-btn')
 deleteBtn.addEventListener('click', () => {
-
-    console.log(calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 1))
-    calcDisplay.textContent.substring(0, calcDisplay.textContent.length - 1)
-
-
+    if (calcOperator === '' && calcDisplay.textContent != '0') {
+        if (calcDisplayA.length - 1 != 0) {
+            calcDisplayA = calcDisplayA.substring(0, calcDisplayA.length - 1)
+            calcDisplay.textContent = calcDisplayA
+        } else {
+            calcDisplayA = 0
+            calcDisplay.textContent = calcDisplayA
+        }
+    }
+    else if (calcOperator && calcDisplayB === '') {
+        calcOperator = ''
+        operatorBtns.forEach((operatorBtn) => operatorBtn.setAttribute('style', 'background-color: lightgray'))
+    }
+    else if (calcOperator && calcDisplayB) {
+        if (calcDisplayB.length - 1 != 0) {
+            calcDisplayB = calcDisplayB.substring(0, calcDisplayB.length - 1)
+            calcDisplay.textContent = calcDisplayB
+        } else {
+            calcDisplayB = 0
+            calcDisplay.textContent = calcDisplayB
+        }
+    }
+    else if (calcDisplay.textContent === '0') {
+        // DO NOTHING
+    }
 })
 
 let clearBtn = document.querySelector('.clear-btn')
@@ -141,5 +161,3 @@ decimalBtn.addEventListener('click', () => {
     }
 
 })
-
-// keyboard support
