@@ -41,9 +41,9 @@ function operate(a, b, operator) {
 // calculator's screen
 let calcDisplay = document.querySelector('.calc-display')
 // before an operator is chosen
-let calcDisplayA = ''
+let calcOperandA = ''
 // after an operator has been chosen
-let calcDisplayB = ''
+let calcOperandB = ''
 // has an operator been chosen?
 let calcOperator = ''
 // is there a decimal in the first number? 
@@ -52,9 +52,9 @@ let calcDecimalA = ''
 let calcDecimalB = ''
 
 function operateCalculator() {
-    calcDisplayA = operate(parseFloat(calcDisplayA), parseFloat(calcDisplayB), calcOperator)
-    calcDisplay.textContent = Number(calcDisplayA.toFixed(4))
-    calcDisplayB = ''
+    calcOperandA = operate(parseFloat(calcOperandA), parseFloat(calcOperandB), calcOperator)
+    calcDisplay.textContent = Number(calcOperandA.toFixed(4))
+    calcOperandB = ''
     if (calcDisplay.textContent.includes('.')) {
         calcDecimalA = '.'
     }
@@ -69,13 +69,13 @@ let numBtns = document.querySelectorAll('.num-btn')
 numBtns.forEach((numBtn) => numBtn.addEventListener('click', () => {
     // before an operator has been chosen
     if (calcOperator === '') {
-        calcDisplayA += numBtn.id
-        calcDisplay.textContent = calcDisplayA
+        calcOperandA += numBtn.id
+        calcDisplay.textContent = calcOperandA
     }
     // after an operator has been chosen
     else {
-        calcDisplayB += numBtn.id
-        calcDisplay.textContent = calcDisplayB
+        calcOperandB += numBtn.id
+        calcDisplay.textContent = calcOperandB
     }
 }))
 
@@ -101,27 +101,34 @@ equalBtn.addEventListener('click', () => {
 })
 
 let deleteBtn = document.querySelector('.delete-btn')
+// EDITOR'S NOTE TO SELF: The delete button is a mess. Let's take another look and see if we can clean this up.
+// KNOWN ISSUES: Does not work as intended with the decimal button
+// POTENTIAL FIXES: Let's simplify this. See below 
+// Check: Are we modifying an Operand? If so, which one?
+// If not, are we modifying an Operator?
+// If not, are we modifying a decimal? If so, which one?
 deleteBtn.addEventListener('click', () => {
+    // This will work when we want to alter calcOperandA
     if (calcOperator === '' && calcDisplay.textContent != '0') {
-        if (calcDisplayA.length - 1 != 0) {
-            calcDisplayA = calcDisplayA.substring(0, calcDisplayA.length - 1)
-            calcDisplay.textContent = calcDisplayA
+        if (calcOperandA.length - 1 != 0) {
+            calcOperandA = calcOperandA.substring(0, calcOperandA.length - 1)
+            calcDisplay.textContent = calcOperandA
         } else {
-            calcDisplayA = 0
-            calcDisplay.textContent = calcDisplayA
+            calcOperandA = 0
+            calcDisplay.textContent = calcOperandA
         }
     }
-    else if (calcOperator && calcDisplayB === '') {
+    else if (calcOperator && calcOperandB === '') {
         calcOperator = ''
         operatorBtns.forEach((operatorBtn) => operatorBtn.setAttribute('style', 'background-color: lightgray'))
     }
-    else if (calcOperator && calcDisplayB) {
-        if (calcDisplayB.length - 1 != 0) {
-            calcDisplayB = calcDisplayB.substring(0, calcDisplayB.length - 1)
-            calcDisplay.textContent = calcDisplayB
+    else if (calcOperator && calcOperandB) {
+        if (calcOperandB.length - 1 != 0) {
+            calcOperandB = calcOperandB.substring(0, calcOperandB.length - 1)
+            calcDisplay.textContent = calcOperandB
         } else {
-            calcDisplayB = 0
-            calcDisplay.textContent = calcDisplayB
+            calcOperandB = 0
+            calcDisplay.textContent = calcOperandB
         }
     }
     else if (calcDisplay.textContent === '0') {
@@ -132,8 +139,8 @@ deleteBtn.addEventListener('click', () => {
 let clearBtn = document.querySelector('.clear-btn')
 clearBtn.addEventListener('click', () => {
     calcDisplay.textContent = 0
-    calcDisplayA = ''
-    calcDisplayB = ''
+    calcOperandA = ''
+    calcOperandB = ''
     calcDecimalA = ''
     calcDecimalB = ''
     calcOperator = ''
@@ -146,17 +153,17 @@ decimalBtn.addEventListener('click', () => {
     if (calcDecimalA === '') {
         calcDecimalA += decimalBtn.id
         if (calcOperator === '') {
-            calcDisplayA += decimalBtn.id
-            calcDisplay.textContent = calcDisplayA
+            calcOperandA += decimalBtn.id
+            calcDisplay.textContent = calcOperandA
         }
     }
     // if the first number already has a decimal, then we check to see if the second number has a decimal,
     // AND we've started to input a number for the second value
     else if (calcDecimalA === '.') {
-        if (calcDecimalB === '' && calcDisplayB != '') {
+        if (calcDecimalB === '' && calcOperandB != '') {
             calcDecimalB += decimalBtn.id
-            calcDisplayB += decimalBtn.id
-            calcDisplay.textContent = calcDisplayB
+            calcOperandB += decimalBtn.id
+            calcDisplay.textContent = calcOperandB
         }
     }
 
