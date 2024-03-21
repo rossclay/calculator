@@ -27,7 +27,7 @@ body {
     font-family: 'Pocket Calculator', sans-serif;
     font-size: 40px;
     border-style: solid;
-    min-width: 150px;
+    width: 150px;
     margin-bottom: 10px;
 }
 
@@ -60,14 +60,14 @@ body {
 .operator-btn,
 .decimal-btn,
 .equal-btn {
-    min-width: 50px;
-    min-height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
 .clear-btn,
 .delete-btn {
     background-color: orange;
-    min-width: 104px;
+    width: 104px;
 }
 
 button {
