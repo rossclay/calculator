@@ -20,6 +20,7 @@ body {
     flex-direction: column;
     max-width: fit-content;
     padding: 25px;
+    box-shadow: 5px 5px 5px;
 }
 
 .calc-display {
@@ -75,4 +76,6 @@ button {
     margin: 2px;
     border-style: solid;
     color: black;
+    align-items: center;
+    justify-content: center;
 }
