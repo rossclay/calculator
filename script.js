@@ -15,7 +15,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
     if (b === 0) {
-        return 'ERROR'
+        return 'undefined'
     }
     else {
         return a / b
@@ -53,9 +53,15 @@ let calcDecimalB = ''
 
 function operateCalculator() {
     calcOperandA = operate(parseFloat(calcOperandA), parseFloat(calcOperandB), calcOperator)
-    calcDisplay.textContent = Number(calcOperandA.toFixed(4))
-    calcOperandB = ''
-    if (calcDisplay.textContent.includes('.')) {
+    if (calcOperandA === 'undefined') {
+        calcDisplay.textContent = calcOperandA
+        calcOperandA = ''
+        calcOperandB = ''
+    } else if (calcOperandA) {
+        calcDisplay.textContent = Number(calcOperandA.toFixed(4))
+        calcOperandB = ''
+    }
+    else if (calcDisplay.textContent.includes('.')) {
         calcDecimalA = '.'
     }
     else {
