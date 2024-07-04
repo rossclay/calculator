@@ -1,58 +1,58 @@
 @font-face {
-    font-family: 'Pocket Calculator';
-    src: url('./fonts/POCKC___.ttf')
+  font-family: "Pocket Calculator";
+  src: url("./fonts/POCKC___.ttf");
 }
 
 body {
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .calc-body {
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
-    border-style: solid;
-    background-color: grey;
-    flex-direction: column;
-    max-width: fit-content;
-    padding: 25px;
-    box-shadow: 5px 5px 5px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  background-color: grey;
+  flex-direction: column;
+  max-width: fit-content;
+  padding: 25px;
+  box-shadow: 5px 5px 5px;
 }
 
 .calc-display {
-    background-color: #7f9783;
-    font-family: 'Pocket Calculator', sans-serif;
-    font-size: 40px;
-    border-style: solid;
-    width: 150px;
-    margin-bottom: 10px;
+  background-color: #7f9783;
+  font-family: "Pocket Calculator", sans-serif;
+  font-size: 40px;
+  border-style: solid;
+  width: 150px;
+  margin-bottom: 10px;
 }
 
 .row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .clear-delete-section {
-    display: flex
+  display: flex;
 }
 
 .num-btn {
-    background-color: white;
+  background-color: white;
 }
 
 .operator-btn,
 .decimal-btn {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
 .equal-btn {
-    background-color: lightcyan;
+  background-color: lightcyan;
 }
 
 .clear-btn,
@@ -61,21 +61,55 @@ body {
 .operator-btn,
 .decimal-btn,
 .equal-btn {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .clear-btn,
 .delete-btn {
-    background-color: orange;
-    width: 104px;
+  background-color: orange;
+  width: 104px;
 }
 
 button {
-    font-size: 26px;
-    margin: 2px;
-    border-style: solid;
-    color: black;
-    align-items: center;
-    justify-content: center;
+  font-size: 26px;
+  margin: 2px;
+  border-style: solid;
+  color: black;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-container {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+footer {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: fit-content;
+  margin-top: auto;
+  padding: 10px 0;
+}
+
+.github-logo {
+  font-size: 3rem;
+  margin-left: 1rem;
+  transition: transform 1s;
+}
+
+a {
+  color: inherit;
+}
+
+.github-logo:hover {
+  transform: rotate(1turn);
 }
