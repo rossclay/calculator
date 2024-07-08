@@ -3,11 +3,9 @@
   src: url("./fonts/POCKC___.ttf");
 }
 
-body {
-  display: flex;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 .calc-body {
@@ -45,14 +43,26 @@ body {
 .num-btn {
   background-color: white;
 }
+.num-btn:hover {
+  background-color: lightgray;
+}
 
 .operator-btn,
 .decimal-btn {
   background-color: lightgray;
 }
 
+.operator-btn:hover,
+.decimal-btn:hover {
+  background-color: gray;
+}
+
 .equal-btn {
   background-color: lightcyan;
+}
+
+.equal-btn:hover {
+  background-color: cyan;
 }
 
 .clear-btn,
@@ -70,6 +80,10 @@ body {
   background-color: orange;
   width: 104px;
 }
+.clear-btn:hover,
+.delete-btn:hover {
+  background-color: darkorange;
+}
 
 button {
   font-size: 26px;
@@ -80,24 +94,30 @@ button {
   justify-content: center;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .page-container {
   display: flex;
+  flex: 1;
   min-height: 100%;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+  padding-top: 2vh;
 }
 
 footer {
   display: flex;
-  align-self: center;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
-  min-height: fit-content;
-  margin-top: auto;
-  padding: 10px 0;
+  height: 8vh;
 }
 
 .github-logo {
